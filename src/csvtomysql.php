@@ -13,27 +13,28 @@ namespace Likel;
 
 /** @var array You must set these options if you aren't planning to use the CLI */
 $OPTIONS = array(
-    "csvfile" => "/var/www/html/public_html/csv-to-mysql/src/candidates.csv",
-    "dbhost" => "",
-    "dbusername" => "",
-    "dbpassword" => "",
-    "dbname" => "",
-    "mysqltablename" => ""
+    "csvfile" => "s",
+    "dbhost" => "asd",
+    "dbusername" => "s",
+    "dbpassword" => "s",
+    "dbname" => "s",
+    "mysqltablename" => "s"
 );
 
-$CTM = new CsvToMysql($OPTIONS);
+// Setup the class with the options
+$CTM = new CSVToMySQL($OPTIONS);
 
-if($CTM->verifyOptions()) {
-
-}
+// Convert eh CSV and insert into a MySQL table, echo the result
+echo $CTM->insert();
 
 // Display any errors encountered
 echo $CTM->outputErrors();
 
 /**
- * This simple class calculates the chance of winning Frustration Solitaire given two values,
+ * This class helps us convert a CSV into a smart MySQL table
+ * This is the model, the controller is found above
  */
-class CsvToMysql
+class CSVToMySQL
 {
     /** @var array The options that control the program */
     private $options = array();
@@ -51,6 +52,15 @@ class CsvToMysql
     function __construct($options = array())
     {
         $this->options = $this->generateOptions($options);
+    }
+
+    /**
+     * The main CTM function that helps to transpose the CSV and insert the table
+     * @return void
+     */
+    public function insert()
+    {
+
     }
 
     /**
