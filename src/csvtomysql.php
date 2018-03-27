@@ -311,26 +311,23 @@ class CSVToMySQL
      */
     public function outputHelp()
     {
-        $short_options = "f:h:u:p:d:t:i::";
-        $long_options = array("csvfile:", "dbhost:", "dbusername:", "dbpassword:", "dbname:", "mysqltablename:", "help");
-
-        $error_string = "";
-        $error_string .= (php_sapi_name() === 'cli') ? "\033[0;32m" : "";
-        $error_string .= "------------------------------------------------------\n" .
-        "usage: php csvtomysql.php [options]
-  options:
-    -f, --csvfile            The path the CSV file you wish to insert
-    -h, --dbhost             Database host
-    -u, --dbusername         Database username
-    -p, --dbpassword         Database password
-    -d, --dbname             Database name
-    -t, --mysqltablename     The table name for the newly inserted table
-    -i, --help               Display these help commands\n" .
+        $help_string = "";
+        $help_string .= (php_sapi_name() === 'cli') ? "\033[0;32m" : "";
+        $help_string .= "------------------------------------------------------\n" .
+        "usage: php csvtomysql.php [options]\n\n" .
+        "options:\n" .
+        "-f, --csvfile            The path the CSV file you wish to insert\n" .
+        "-h, --dbhost             Database host\n" .
+        "-u, --dbusername         Database username\n" .
+        "-p, --dbpassword         Database password\n" .
+        "-d, --dbname             Database name\n" .
+        "-t, --mysqltablename     The table name for the newly inserted table\n" .
+        "-i, --help               Display these help commands\n" .
         "------------------------------------------------------\n";
 
-        $error_string .= (php_sapi_name() === 'cli') ? "\033[0m" : "";
+        $help_string .= (php_sapi_name() === 'cli') ? "\033[0m" : "";
 
-        return $error_string;
+        return $help_string;
     }
 }
 
