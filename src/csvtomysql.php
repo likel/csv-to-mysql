@@ -238,7 +238,7 @@ class CSVToMySQL
         $new_header_row = array();
 
         foreach($header_row as $key => $a_row){
-            $new_header_row[$key] = str_replace(" ", "_", preg_replace("/[^ \w]+/", "_", trim($a_row)));
+            $new_header_row[$key] = strtolower(str_replace(" ", "_", preg_replace("/[^ \w]+/", "_", trim($a_row))));
         }
 
         return $new_header_row;
@@ -274,7 +274,7 @@ class CSVToMySQL
     {
         $verified = true;
         foreach($this->options as $key => $an_option) {
-            if(empty($an_option)) {
+            if(empty($an_option) && $key != "help") {
                 $this->error_lines[] = "The {$key} option is empty";
                 $verified = false;
             }
