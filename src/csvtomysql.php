@@ -75,8 +75,6 @@ class CSVToMySQL
     {
         if($this->verifyOptions()) {
             if($this->populateRows()) {
-                //$lengths = array_map('strlen', $this->csv_rows);
-                //var_dump($lengths);
                 if($this->createTable()){
                     if($this->insertRows()) {
                         return true;
@@ -130,23 +128,23 @@ class CSVToMySQL
         foreach($this->csv_rows as $key => $row) {
             $new = array();
             foreach($row as $key2 => $cell) {
-        		$new[] = ":{$key}_$key2";//implode(", :{$key}_", $row);
+        		$new[] = ":{$key}_$key2";
             }
             $query_part_two[] = "(" . join(",", $new) . ")";
         }
 
         $query_part_two_joined = join(", ", $query_part_two);
 
-		$DB->query("
+	$DB->query("
             INSERT INTO {$this->options['mysqltablename']} ({$query_part_one})
             VALUES {$query_part_two_joined}
         ");
 
-		foreach($this->csv_rows as $key => $row) {
+	foreach($this->csv_rows as $key => $row) {
             foreach($row as $key2 => $cell) {
                 $DB->bind(":{$key}_$key2", $cell);
             }
-		}
+	}
 
         try {
             $DB->execute();
