@@ -4,7 +4,7 @@ Using PHP. Parse a CSV file, make an attempt at the column type and max length, 
 ## Usage
 ### Through the CLI
 ```
-$ php [src/csv_to_mysql.php](src/csv_to_mysql.php) [options]
+$ php src/csv_to_mysql.php [options]
 
 options:
   -f, --csvfile            The path the CSV file you wish to insert
