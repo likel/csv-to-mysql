@@ -312,7 +312,7 @@ class CSVToMySQL
         $help_string = "";
         $help_string .= (php_sapi_name() === 'cli') ? "\033[0;32m" : "";
         $help_string .= "------------------------------------------------------\n" .
-        "usage: php csvtomysql.php [options]\n\n" .
+        "usage: php csv_to_mysql.php [options]\n\n" .
         "options:\n" .
         "-f, --csvfile            The path the CSV file you wish to insert\n" .
         "-h, --dbhost             Database host\n" .
